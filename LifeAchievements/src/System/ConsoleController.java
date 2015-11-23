@@ -25,7 +25,7 @@ public class ConsoleController {
 	private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 	public static void main(String[] args) throws RequirementsNotMetException, IOException {
-
+		System.out.println("Hi GitHub!");
 		int i = 0;
 		while (!end) {
 			i++;
