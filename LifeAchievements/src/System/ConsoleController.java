@@ -24,12 +24,11 @@ public class ConsoleController {
 	private static Hashtable<String, Integer> secrets = new Hashtable<String, Integer>();
 	private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-	public static void main(String[] args) throws RequirementsNotMetException, IOException {
-		System.out.println("Hi GitHub!");
+	protected static void run() throws RequirementsNotMetException, IOException {
 		int i = 0;
 		while (!end) {
 			i++;
-			System.out.print(i + "|Enter a command (type h for a list of commands):");
+			System.out.print(i + "|Enter a command ('help' for commands):");
 			String in = br.readLine();
 			switch (getCommand(in)) {
 			case -1:
