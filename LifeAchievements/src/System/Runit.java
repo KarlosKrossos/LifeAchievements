@@ -17,14 +17,14 @@ public class Runit {
     private static void testPersonCreation() {
 
         System.out.println(">>> testPersonCreation");
-        Person admin = new Person("Erni", "Jürgens", 79, true, Permission.ADMIN);
+        new Person("Erni", "Jürgens", 79, true, Permission.ADMIN);
         printPersonDataBase();
 
-        Person user = new Person("Martha", "Hauhammer", 46, false,
+        new Person("Martha", "Hauhammer", 46, false,
                 Permission.USER);
         printPersonDataBase();
 
-        Person guest = new Person("John", "Noodle", 5, true, Permission.GUEST);
+        new Person("John", "Noodle", 5, true, Permission.GUEST);
         printPersonDataBase();
     }
 

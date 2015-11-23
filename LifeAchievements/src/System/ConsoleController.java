@@ -68,8 +68,16 @@ public class ConsoleController {
 			case 11:
 				togglePrintRequests();
 				break;
+			case 12:
+				registerUser();
+				break;
 			}
 		}
+	}
+
+	private static void registerUser() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private static void togglePrintRequests() {
@@ -223,6 +231,7 @@ public class ConsoleController {
 		commands.put("end", 2);
 		commands.put("exit", 2);
 		commands.put("status", 9);
+		commands.put("register", 12);
 		secrets.put("toggle", 11);
 		secrets.put("clean", 8);
 		secrets.put("show", 3);
