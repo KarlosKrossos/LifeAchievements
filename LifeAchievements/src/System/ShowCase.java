@@ -6,7 +6,7 @@ import Personalisation.PersonDatabase;
 import Utility.Permission;
 import Utility.RequirementsNotMetException;
 
-public class Runit {
+public class ShowCase {
 
     public static void main(String[] args) throws RequirementsNotMetException {
         testPersonCreation();
