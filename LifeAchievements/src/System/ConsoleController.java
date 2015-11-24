@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 import Achievements.*;
 import Personalisation.Person;
 import Personalisation.PersonDatabase;
+import Personalisation.UserDatabase;
 import Utility.Permission;
 import Utility.RequirementsNotMetException;
 
@@ -74,9 +75,9 @@ public class ConsoleController {
 		}
 	}
 
-	private static void registerUser() {
+	private static void registerUser() throws IOException {
 		// TODO Auto-generated method stub
-		
+		UserDatabase.registerUser(AccessController.getCurrentUser());
 	}
 
 	private static void togglePrintRequests() {
@@ -92,24 +93,26 @@ public class ConsoleController {
 	}
 
 	private static void selectPerson() {
-		boolean valid = false;
-		int id = -1;
-		while (!valid) {
-			try {
-				System.out.print("Enter ID:");
-				id = Integer.parseInt(br.readLine());
-				if (id != -1) {
-					valid = true;
-				}
-			} catch (NumberFormatException e) {
-			} catch (IOException e) {
-			} finally {
-				if (!valid) {
-					System.out.println("Invalid Format!");
+		if (Permission.getPermission("ConsoleController.selectPerson")) {
+			boolean valid = false;
+			int id = -1;
+			while (!valid) {
+				try {
+					System.out.print("Enter ID:");
+					id = Integer.parseInt(br.readLine());
+					if (id != -1) {
+						valid = true;
+					}
+				} catch (NumberFormatException e) {
+				} catch (IOException e) {
+				} finally {
+					if (!valid) {
+						System.out.println("Invalid Format!");
+					}
 				}
 			}
+			AccessController.selectPerson(id);
 		}
-		AccessController.selectPerson(id);
 	}
 
 	private static void cleanGuests() {
@@ -199,7 +202,7 @@ public class ConsoleController {
 		AccessController.logoutTempUser();
 	}
 
-	private static String getConfirmPhrase() {
+	public static String getConfirmPhrase() {
 		return "(confirm with '" + confirmPhrase + "')";
 	}
 
@@ -211,10 +214,14 @@ public class ConsoleController {
 		try {
 			return commands.get(s);
 		} catch (Exception e) {
-			System.out.println("Command not found.");
+			System.out.print("Command not found.");
 			try {
+				if (secrets.get(s) != null) {
+					System.out.println(" ;-)");
+				}
 				return secrets.get(s);
 			} catch (Exception e2) {
+				System.out.println(" ");
 				return -1;
 			}
 		}
@@ -252,6 +259,7 @@ public class ConsoleController {
 	}
 
 	private static void printDatabase() {
+		// TODO print current person stats incl. achievements
 		PersonDatabase.printDatabase();
 	}
 

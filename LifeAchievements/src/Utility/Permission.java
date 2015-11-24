@@ -12,6 +12,8 @@ public enum Permission {
      */
     private static final long serialVersionUID = 2214802304429380620L;
 
+    
+    // TODO do this annotation based
     public static boolean getPermission(String methodName) {
         User person = AccessController.getCurrentUser();
         if (ConsoleController.printRequests()) {
