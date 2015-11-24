@@ -24,55 +24,80 @@ public class ConsoleController {
 	private static Hashtable<String, Integer> commands = new Hashtable<String, Integer>();
 	private static Hashtable<String, Integer> secrets = new Hashtable<String, Integer>();
 	private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	static int i = 0, timeoutCounter = 30;
 
 	protected static void run() throws RequirementsNotMetException, IOException {
-		int i = 0;
+
 		while (!end) {
-			i++;
-			System.out.print(i + "|Enter a command ('help' for commands):");
-			String in = br.readLine();
-			switch (getCommand(in)) {
-			case -1:
-				break;
-			case 1:
-				createPerson();
-				break;
-			case 2:
-				end = true;
-				System.out.println("Ending");
-				break;
-			case 3:
-				printDatabase();
-				break;
-			case 4:
-				AccessController.login();
-				break;
-			case 5:
-				AccessController.logout();
-				break;
-			case 6:
-				printCommands();
-				break;
-			case 7:
-				addAchievement();
-				break;
-			case 8:
-				cleanGuests();
-				break;
-			case 9:
-				AccessController.getStatus();
-				break;
-			case 10:
-				selectPerson();
-				break;
-			case 11:
-				togglePrintRequests();
-				break;
-			case 12:
-				registerUser();
-				break;
+
+			if (i >= timeoutCounter) {
+				if (!refreshSession()) {
+					end = true;
+				}
+			} else {
+
+				++i;
+				System.out.print(i + "|Enter a command ('help' for commands):");
+				String in = br.readLine();
+				switch (getCommand(in)) {
+				case -1:
+					break;
+				case 1:
+					createPerson();
+					break;
+				case 2:
+					end = true;
+					System.out.println("Ending");
+					break;
+				case 3:
+					printDatabase();
+					break;
+				case 4:
+					AccessController.login();
+					break;
+				case 5:
+					AccessController.logout();
+					break;
+				case 6:
+					printCommands();
+					break;
+				case 7:
+					addAchievement();
+					break;
+				case 8:
+					cleanGuests();
+					break;
+				case 9:
+					AccessController.getStatus();
+					break;
+				case 10:
+					selectPerson();
+					break;
+				case 11:
+					togglePrintRequests();
+					break;
+				case 12:
+					registerUser();
+					break;
+				}
 			}
 		}
+	}
+
+	private static boolean refreshSession() throws IOException {
+		boolean refresh = false;
+		System.out.print("Continue?" + getConfirmPhrase());
+		String confirm = br.readLine();
+		if (confirm.equals(confirmPhrase)) {
+			refresh = true;
+			i = 0;
+		} else {
+			System.out.println("******************************");
+			System.out.println("* Ending Life Achievements.  *");
+			System.out.println("*      Til senere! ;-)       *");
+			System.out.println("******************************");
+		}
+		return refresh;
 	}
 
 	private static void registerUser() throws IOException {
@@ -259,7 +284,7 @@ public class ConsoleController {
 	}
 
 	private static void printDatabase() {
-		// TODO print current person stats incl. achievements
+		// TODO print current person stats incl. achievements if not admin
 		PersonDatabase.printDatabase();
 	}
 
@@ -309,6 +334,20 @@ public class ConsoleController {
 			return new Speak(AccessController.getCurrentPerson());
 		case "Read":
 			return new Read(AccessController.getCurrentPerson());
+		case "WatchTV":
+			return new WatchTV(AccessController.getCurrentPerson());
+		case "DryDishes":
+			return new DryDishes(AccessController.getCurrentPerson());
+		case "BeButtler":
+			return new BeButtler(AccessController.getCurrentPerson());
+		case "BeWaiter":
+			return new BeWaiter(AccessController.getCurrentPerson());
+		case "BindTie":
+			return new BindTie(AccessController.getCurrentPerson());
+		case "PolishCuttlery":
+			return new PolishCuttlery(AccessController.getCurrentPerson());
+		case "PolishShoes":
+			return new PolishShoes(AccessController.getCurrentPerson());
 		default:
 			System.out.println("Achievement '" + achievement + "' not available.");
 			return null;
