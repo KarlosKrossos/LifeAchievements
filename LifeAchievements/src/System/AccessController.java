@@ -55,6 +55,8 @@ public class AccessController {
 
 	protected static boolean login() throws IOException {
 
+		// TODO when user is created it should be constantly associated with user and reloaded with login
+		
 		boolean loggedOut = true;
 		if (loggedInAsUser || loggedInAsAdmin) {
 			System.out.print("Logout current user?" + getConfirmPhrase());

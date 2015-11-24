@@ -12,6 +12,8 @@ import Achievements.*;
 import Personalisation.Person;
 import Personalisation.PersonDatabase;
 import Personalisation.UserDatabase;
+import Rewards.UseValcrowShoes;
+import Rewards.WatchTV;
 import Utility.Permission;
 import Utility.RequirementsNotMetException;
 
@@ -348,6 +350,12 @@ public class ConsoleController {
 			return new PolishCuttlery(AccessController.getCurrentPerson());
 		case "PolishShoes":
 			return new PolishShoes(AccessController.getCurrentPerson());
+		case "Babble":
+			return new Babble(AccessController.getCurrentPerson());
+		case "Drink":
+			return new Drink(AccessController.getCurrentPerson());
+		case "Swallow":
+			return new Swallow(AccessController.getCurrentPerson());
 		default:
 			System.out.println("Achievement '" + achievement + "' not available.");
 			return null;

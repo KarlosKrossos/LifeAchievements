@@ -3,6 +3,7 @@ package System;
 import Achievements.*;
 import Personalisation.Person;
 import Personalisation.PersonDatabase;
+import Rewards.UseValcrowShoes;
 import Utility.Permission;
 import Utility.RequirementsNotMetException;
 

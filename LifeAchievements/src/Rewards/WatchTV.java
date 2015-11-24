@@ -1,5 +1,6 @@
-package Achievements;
+package Rewards;
 
+import Achievements.Achievement;
 import Personalisation.Person;
 import Utility.RequirementsNotMetException;
 
