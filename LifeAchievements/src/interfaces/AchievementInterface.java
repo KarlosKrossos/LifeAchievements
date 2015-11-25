@@ -2,8 +2,8 @@ package interfaces;
 
 import java.util.List;
 
-import Achievements.Achievement;
-import Utility.RequirementsNotMetException;
+import achievements.Achievement;
+import utility.RequirementsNotMetException;
 
 public interface AchievementInterface {
 
