@@ -12,9 +12,11 @@ public class PersonDatabaseTests {
 		PersonDatabase.addPerson(new Person("user","no1",2,false,Permission.USER));
 		PersonDatabase.addPerson(new Person("guest","no1",3,false,Permission.GUEST));
 		PersonDatabase.addPerson(new Person("editable","no1",4,true,Permission.GUEST));
+		// invalid entry 
+		PersonDatabase.addPerson(new Person("","",-1,true,Permission.ADMIN));
 	}
 
-	// test all methods
+	// test clean guests from database
 	@Test
 	public void testCleanGuests() {
 		// TODO make sure proper rights granted for this test
@@ -34,10 +36,23 @@ public class PersonDatabaseTests {
 		Assert.assertTrue(noGuest);
 	}
 	
-	// test
+	// test remove individual person
 	@Test
 	public void removePerson() {
+		// TODO requires admin rights
+		
+		// TODO assure guest and user rights are not sufficient and thus don't work
+	}
+	
+	// remove persons whose data do not meet minimum requirements
+	@Test
+	public void cleanInvalidPersons() {
 		
 	}
-
+	
+	// ensures only admin can do this
+	@Test
+	public void printDatabase() {
+		
+	}
 }
