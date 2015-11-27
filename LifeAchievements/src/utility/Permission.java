@@ -15,11 +15,11 @@ public enum Permission {
     
     // TODO do this annotation based
     public static boolean getPermission(String methodName) {
-        User person = AccessController.getCurrentUser();
+        User user = AccessController.getCurrentUser();
         if (ConsoleController.printRequests()) {
             System.out.println("Request to use " + methodName);
         }
-        if (person == null) {
+        if (user == null) {
             try {
                 throw new PermissionDeniedException(null, methodName);
             } catch (PermissionDeniedException e) {
@@ -27,18 +27,18 @@ public enum Permission {
             }
         } else {
 
-            Permission user = person.getPermission();
+            Permission permission = person.getPermission();
             Permission required = PermissionDatabase.checkPermissionRequired(
                     methodName, serialVersionUID);
-            if (user == null) {
+            if (permission == null) {
                 return false;
-            } else if (user == Permission.ADMIN || user == required) {
+            } else if (permission == Permission.ADMIN || permission == required) {
                 return true;
             } else if (required == Permission.GUEST) {
                 return true;
             } else {
                 try {
-                    throw new PermissionDeniedException(user, methodName);
+                    throw new PermissionDeniedException(permission, methodName);
                 } catch (PermissionDeniedException e) {
                     return false;
                 }
