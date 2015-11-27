@@ -1,0 +1,25 @@
+package utilityTests;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import utility.Permission;
+
+public class PermissionDeniedExceptionTests {
+  
+	@Before
+	public void setUp() throws Exception {
+		
+	}
+	
+	/*
+	* TODO is the print showing the correct data?
+	*/
+	@Test
+	public void exceptionPrintoutTest() {
+		
+	}
+	
+}
