@@ -1,0 +1,45 @@
+package utilityTests;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import personalisation.Person;
+import utility.Permission;
+
+public class PermissionDatabaseTests {
+
+  private static final long serialVersionUID_Permission = 2214802304429380620L;
+  private static final long serialVersionUID_Permission_WRONG = 2214802304133780620L;
+    
+  // TODO private methods need to be tested indirectly
+  
+	@Before
+	public void setUp() throws Exception {
+		
+	}
+	
+	/*
+	* TODO no request may be answered properly unless the id is correct
+	*/
+	@Test
+	public void checkPermissionRequiredTest_wrongSerialUid() {
+		
+	}
+	
+	/*
+	* TODO an unlisted method must always return admin rights as requirement
+	*/
+	@Test
+	public void checkPermissionRequiredTest_methodNotListed() {
+		
+	}
+	
+	/*
+	* TODO if the parameter methodName is not set i.e. null the method should still return a correct value
+	*/
+	@Test
+	public void checkPermissionRequiredTest_methodNameNull() {
+		 
+	}
