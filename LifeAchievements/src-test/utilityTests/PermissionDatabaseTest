@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import personalisation.Person;
 import utility.Permission;
 
 public class PermissionDatabaseTests {
@@ -14,6 +13,8 @@ public class PermissionDatabaseTests {
   private static final long serialVersionUID_Permission_WRONG = 2214802304133780620L;
     
   // TODO private methods need to be tested indirectly
+  
+  // TODO formatting
   
 	@Before
 	public void setUp() throws Exception {
@@ -43,3 +44,5 @@ public class PermissionDatabaseTests {
 	public void checkPermissionRequiredTest_methodNameNull() {
 		 
 	}
+	
+}
