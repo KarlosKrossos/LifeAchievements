@@ -39,7 +39,7 @@ public class AccessController {
 
 	public static void selectPerson(int id) {
 		if (Permission.getPermission("AccessController.selectPerson")) {
-			List<Person> persons = PersonDatabase.getPersons(getAdmin().getPerson());
+			List<Person> persons = PersonDatabase.getPersons();
 			boolean found = false;
 			for (Person p : persons) {
 				if (p.getId() == id) {

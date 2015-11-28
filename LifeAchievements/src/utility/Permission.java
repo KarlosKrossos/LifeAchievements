@@ -27,7 +27,7 @@ public enum Permission {
             }
         } else {
 
-            Permission permission = person.getPermission();
+            Permission permission = user.getPermission();
             Permission required = PermissionDatabase.checkPermissionRequired(
                     methodName, serialVersionUID);
             if (permission == null) {

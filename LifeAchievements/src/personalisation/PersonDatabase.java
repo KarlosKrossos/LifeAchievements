@@ -85,7 +85,7 @@ public class PersonDatabase {
     *   this is in order to select or process person data
     *   processing may be changing or deleting
     */
-    public static List<Person> getPersons(Person person) {
+    public static List<Person> getPersons() {
         if (Permission.getPermission("PersonDatabase.getPersons")) {
             return persons;
         } else {
